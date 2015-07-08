@@ -74,7 +74,7 @@ textarea {
 }
 .centered {
 	width: 600px;
-	height: 500px;
+	height: 350px;
 
 	position: absolute;
 	top: 0; left: 0; right: 0; bottom: 0;
@@ -108,8 +108,15 @@ textarea {
 }	
 
 /* ids */
-#header {
-	margin-bottom: 10px;
+#footer {
+	font-family: DroidSans;
+	font-size: 20px;
+	letter-spacing: 1px;
+	text-align: center;
+	position: fixed;
+	bottom: 0px;
+	margin-bottom: 5px;
+	width: 100%;
 }
 #nextbutton {
 	margin-top: 15px;
