@@ -9,20 +9,72 @@
 	<meta name="mobile-web-app-capable" content="yes">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="script.js"></script>
+	<style>
+		#chat { margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		#chatbody { font: 13px Helvetica, Arial;
+		}
+		#chatform { background: #000;
+			padding: 3px;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+		}
+		form input { border: 0;
+			padding: 10px;
+			width: 90%;
+			margin-right: .5%;
+		}
+		form button { width: 9%;
+			background: rgb(130, 224, 255);
+			border: none;
+			padding: 10px;
+		}
+		#messages { list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		#messages li { padding: 5px 10px;
+		}
+		#messages li:nth-child(odd) { background: #eee; }
+	</style>
 </head>
 <body>
 	<title>Lockdown</title>
-	<div id="main">
+	<div id="home" class="backgroundImage body active">
 		<div class="absolute centered">
 			<h1>Lockdown</h1>
-			<div id="body">
-				<form>
-					<input id="username" type="text" placeholder="Username">
-					<input id="nextbutton" class="circular" type="image" src="rightarrow.jpg">
-				</form>
+			<div id="form">
+				<input id="username" type="text" placeholder="Username" autofocus>
+				<input id="nextbutton" class="circular" type="image" src="rightarrow.jpg" onclick="showChat()">
 			</div>
 		</div>
 		<div id="footer">A project created by DCXP</div>
 	</div>
+	<div id="chat" class="body">
+		<div id="chatbody">
+			<ul id="messages"></ul>
+			<form id="chatform" action="">
+				<input id="m" autocomplete="off" /><button>Send</button>
+			</form>
+			<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+			<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+			<script>
+				var socket = io();
+			//sending the message to server
+			$('#chatform').submit(function(){
+				socket.emit('chat message', $('#m').val());
+				$('#m').val('');
+				return false;
+			});
+			//getting message from server and adding it to the thing
+			socket.on('chat message', function(msg){
+				$('#messages').append($('<li>').text(msg));
+			});
+		</script>
+	</div>
+</div>
 </body>
 </html>

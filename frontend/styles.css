@@ -7,7 +7,7 @@ a:hover {
 	text-decoration: none;
 }
 body {
-	background-image: url( chatbubble.png );
+	/*background-image: url( 'chatbubble.png' );*/
 	margin: 0 auto;
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
@@ -49,6 +49,15 @@ textarea {
 /* classes */
 .absolute {
 	position: absolute;
+}
+.backgroundImage {
+	background-image: url( 'chatbubble.png' );
+	margin: 0 auto;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
 }
 .body {
 	visibility: hidden;
