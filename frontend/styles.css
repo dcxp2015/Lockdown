@@ -73,8 +73,8 @@ textarea {
 	opacity: 1;
 }
 .centered {
-	width: 500px;
-	height: 400px;
+	width: 600px;
+	height: 500px;
 
 	position: absolute;
 	top: 0; left: 0; right: 0; bottom: 0;
@@ -86,8 +86,8 @@ textarea {
 	overflow: auto;
 }
 .circular {
-	width: 50px;
-	height: 50px;
+	width: 80px;
+	height: 80px;
 	border-radius: 500px;
 	-webkit-border-radius: 500px;
 	-mox-border-radius: 500px;
@@ -108,19 +108,20 @@ textarea {
 }	
 
 /* ids */
-#searchbutton {
-	margin-top: 5px;
-	width: 50px;
-	height: auto;
-	vertical-align: bottom;
+#header {
+	margin-bottom: 10px;
 }
-#searchbutton:hover {
-	background-color: #353535;
+#nextbutton {
+	margin-top: 15px;
+}
+#nextbutton:hover {
+	background-color: white;
 }
 #username {
 	font-family: DroidSans;
 	color: black;
 	background: white;
+	margin-top: 30px;
 	width: 500px;
 	border: 1px;
 	border-radius: 4px;
@@ -128,4 +129,5 @@ textarea {
 	font-size: 20px;
 	padding: 12px 8px;
 	text-align: center;
+	float: left;
 }
