@@ -1,1 +1,6 @@
+<<<<<<< HEAD
 backend/credentials.json
+=======
+backend/credentials.json
+backend/node_modules/socket.io
+>>>>>>> ee3ef8c615113c0e1dbfe3fdece32415c6c7fff0
