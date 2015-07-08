@@ -3,7 +3,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/frontend/second.html');
+  res.sendFile('/Users/rahulsundararaman/Desktop/Lockdown/frontend/second.html');
 });
 
 io.on('connection', function(socket){
@@ -14,7 +14,3 @@ io.on('connection', function(socket){
 http.listen(3000, '192.168.1.162', function() {
 	console.log('listening on 192.168.1.162:3000');
 });
-/*http.listen(192.168.1.162:3000, function(){
-  console.log('listening on 192.168.1.162:3000');
-});
-*/
