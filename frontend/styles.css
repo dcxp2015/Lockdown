@@ -7,6 +7,7 @@ a:hover {
 	text-decoration: none;
 }
 body {
+	background-image: url( chatbubble.png );
 	margin: 0 auto;
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
@@ -23,6 +24,7 @@ h1 {
 	font-family: DroidSans;
 	font-size: 70px;
 	letter-spacing: 5px;
+	color: white;
 }
 h2 {
 	font-family: DroidSans;
@@ -72,7 +74,7 @@ textarea {
 }
 .centered {
 	width: 500px;
-	height: 300px;
+	height: 400px;
 
 	position: absolute;
 	top: 0; left: 0; right: 0; bottom: 0;
@@ -106,14 +108,24 @@ textarea {
 }	
 
 /* ids */
+#searchbutton {
+	margin-top: 5px;
+	width: 50px;
+	height: auto;
+	vertical-align: bottom;
+}
+#searchbutton:hover {
+	background-color: #353535;
+}
 #username {
 	font-family: DroidSans;
 	color: black;
-	background: transparent;
+	background: white;
 	width: 500px;
 	border: 1px;
 	border-radius: 4px;
 	letter-spacing: 1px;
-	padding: 4px 8px;
+	font-size: 20px;
+	padding: 12px 8px;
 	text-align: center;
 }
