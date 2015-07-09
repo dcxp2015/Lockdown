@@ -5,7 +5,7 @@ var socketio = require('socket.io')(80);
 
 var app = express();
 
-var dbhelper = {
+module.exports = {
     connection : null,
 
     connect: function () {
@@ -16,13 +16,30 @@ var dbhelper = {
         });
     },
 
-    signIn: function(user) {
-        connection.query('INSERT INTO Users SET ?', {username: connection.escape(user)}, function(err, result) {
+    signIn: function(user, callback) {
+        connection.query('SELECT * FROM Users WHERE username = "' + connection.escape(user) + '"', function(err, result) {
             if(err) {
                 throw err;
             }
 
-            console.log('result: ' + result);
+            // User is signed in
+            if(result.length > 0) {
+                callback(false);
+            }
+            else {
+                connection.query('INSERT INTO Users SET ?', {username: connection.escape(user)}, function(err, result) {
+                    if(err) {
+                        throw err;
+                    }
+
+                    callback(true);
+
+                    console.log('result: ' + result);
+                });
+            }
+
+
+            console.log("result: " + result);
         });
     },
 
@@ -31,8 +48,8 @@ var dbhelper = {
             if(err) {
                 throw err;
             }
-
+a
             console.log('result' + result);
         });
     }
-}
+};

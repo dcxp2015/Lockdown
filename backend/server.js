@@ -1,16 +1,26 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var dbhelper = require('./dbhelper.js');
 
 app.get('/', function(req, res){
-  res.sendFile('/Users/rahulsundararaman/Desktop/Lockdown/frontend/second.html');
+    res.sendFile('/Users/Daniel/Desktop/DCXP 2015/Lockdown/Lockdown/frontend/index.html');
 });
 
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
+    socket.on('user', function(msg){
+        dbhelper.connect();
+        dbhelper.signIn(msg, function(success) {
+            if(success) {
+
+            }
+            else {
+
+            }
+        });
+    });
 });
-http.listen(3000, '192.168.1.162', function() {
-	console.log('listening on 192.168.1.162:3000');
+
+http.listen(3001, '192.168.1.164', function() {
+    console.log('listening on 192.168.1.164:3000');
 });
