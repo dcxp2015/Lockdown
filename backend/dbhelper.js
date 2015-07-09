@@ -1,6 +1,8 @@
 var fs = require('fs');
 var mysql = require('mysql');
 var express = require('express');
+var socketio = require('socket.io')(80);
+
 var app = express();
 
 var dbhelper = {
@@ -34,6 +36,3 @@ var dbhelper = {
         });
     }
 }
-
-dbhelper.connect();
-dbhelper.signOut('daniel');
