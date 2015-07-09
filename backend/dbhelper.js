@@ -1,9 +1,6 @@
 var fs = require('fs');
 var mysql = require('mysql');
-var express = require('express');
 var socketio = require('socket.io')(80);
-
-var app = express();
 
 module.exports = {
     connection : null,
