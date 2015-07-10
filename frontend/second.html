@@ -2,6 +2,8 @@
 <html>
 	<head>
 		<title>Socket.IO chat</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+        <link rel="stylesheet" href="styles.css"/>
 		<style>
 			* { margin: 0;
 			 padding: 0;
@@ -13,15 +15,22 @@
 			 padding: 3px;
 			 position: fixed;
 			 bottom: 0;
-			 width: 100%;
+			 width: 70%;
+
+
+			 left: 0;
+			 right: 0;
+			 margin: auto;
+			 text-align: center;
+
+			 overflow: auto;
 			 }
-			form input { border: 0;
+			#m{ border: 0;
 			 padding: 10px;
 			 width: 90%;
 			 margin-right: .5%;
 			 }
 			form button { width: 9%;
-			 background: rgb(130, 224, 255);
 			 border: none;
 			 padding: 10px;
 			 }
@@ -37,7 +46,8 @@
 	<body>
 		<ul id="messages"></ul>
 		<form action="">
-			<input id="m" autocomplete="off" /><button>Send</button>
+			<input id="m" type="text" rows="10" placeholder="username"/>
+			<button class="btn btn-primary btn-lg">Send</button>
 		</form>
 		<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
@@ -49,6 +59,7 @@
 				$('#m').val('');
 				return false;
 			});
+
 			//getting message from server and adding it to the thing
 			socket.on('chat message', function(msg){
 				$('#messages').append($('<li>').text(msg));

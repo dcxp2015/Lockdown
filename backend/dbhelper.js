@@ -1,6 +1,7 @@
 var fs = require('fs');
 var mysql = require('mysql');
 var socketio = require('socket.io')(80);
+var connections = new Array();
 
 module.exports = {
     connection : null,
@@ -13,7 +14,7 @@ module.exports = {
         });
     },
 
-    signIn: function(user, callback) {
+    signIn: function(user, ip, callback) {
         connection.query('SELECT * FROM Users WHERE username = "' + connection.escape(user) + '"', function(err, result) {
             if(err) {
                 throw err;
@@ -31,6 +32,10 @@ module.exports = {
 
                     callback(true);
 
+                    if(connections.indexOf(user) == -1) {
+                        connections.push({key: user, value: ip})
+                    }
+
                     console.log('result: ' + result);
                 });
             }
@@ -45,7 +50,9 @@ module.exports = {
             if(err) {
                 throw err;
             }
-a
+
+            delete exports.connections[user];
+
             console.log('result' + result);
         });
     }
