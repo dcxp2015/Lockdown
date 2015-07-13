@@ -17,7 +17,14 @@ app.get('/app', function(req, res) {
             res.sendFile('/Users/Daniel/Desktop/DCXP 2015/Lockdown/Lockdown/frontend/second.html');
         }
         else {
-            res.send("unable to sign you in");
+            res.sendFile('/Users/Daniel/Desktop/DCXP 2015/Lockdown/Lockdown/frontend/new_index.html');
         }
     });
+});
+
+io.on('connection', function(socket) {
+    socket.on('chat message', function(msg) {
+        io.emit('chat message', msg);
+    });
+
 });
