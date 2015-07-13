@@ -15,7 +15,7 @@ module.exports = {
     },
 
     signIn: function(user, ip, callback) {
-        connection.query('SELECT * FROM Users WHERE username = "' + connection.escape(user) + '"', function(err, result) {
+        connection.query('SELECT * FROM Users WHERE username = ?', user, function(err, result) {
             if(err) {
                 throw err;
             }
@@ -25,7 +25,7 @@ module.exports = {
                 callback(false);
             }
             else {
-                connection.query('INSERT INTO Users SET ?', {username: connection.escape(user)}, function(err, result) {
+                connection.query('INSERT INTO Users ?', {username: connection.escape(user)}, function(err, result) {
                     if(err) {
                         throw err;
                     }
@@ -51,7 +51,7 @@ module.exports = {
                 throw err;
             }
 
-            delete exports.connections[user];
+            connections.splice(connections.indexOf(user), 1);
 
             console.log('result' + result);
         });
