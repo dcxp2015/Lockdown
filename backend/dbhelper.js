@@ -35,13 +35,8 @@ module.exports = {
                     if(connections.indexOf(user) == -1) {
                         connections.push({key: user, value: ip})
                     }
-
-                    console.log('result: ' + result);
                 });
             }
-
-
-            console.log("result: " + result);
         });
     },
 
